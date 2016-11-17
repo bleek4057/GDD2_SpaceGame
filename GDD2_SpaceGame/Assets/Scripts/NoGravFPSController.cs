@@ -23,9 +23,10 @@ public class NoGravFPSController : MonoBehaviour {
     {
         yaw += mouseSensitvity * Input.GetAxis("Mouse X");
         pitch -= mouseSensitvity * Input.GetAxis("Mouse Y");
-        roll -= rollPower * Input.GetAxis("Roll");
+        //roll -= rollPower * Input.GetAxis("Roll");
+        roll = 0;
 
-        transform.eulerAngles = new Vector3(pitch, yaw, roll);
+        transform.localEulerAngles = new Vector3(pitch, yaw, roll);
     }
 	
 	// Update is called once per frame
