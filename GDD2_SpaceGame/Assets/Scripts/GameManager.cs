@@ -4,54 +4,61 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
     //array for the weapons
-    int currentWeapon;
-    GameObject[] weapons;
+    public int currentWeapon;
+    public GameObject[] weapons; // Add weapon prefabs in Editor
+
+    bool[] availableWeapons;
+
+    public void addWeapon(int index)
+    {
+        availableWeapons[index] = true;
+    }
 
 	// Use this for initialization
 	void Start ()
     {
-        currentWeapon = 1;
-        weapons = new GameObject[10];
+        currentWeapon = 0;
+        availableWeapons = new bool[10];
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+	    if(Input.GetKeyDown(KeyCode.Alpha1) && availableWeapons[1])
+        {
+            currentWeapon = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && availableWeapons[2])
         {
             currentWeapon = 1;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && availableWeapons[3])
         {
             currentWeapon = 2;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.Alpha4) && availableWeapons[4])
         {
             currentWeapon = 3;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+        if (Input.GetKeyDown(KeyCode.Alpha5) && availableWeapons[5])
         {
             currentWeapon = 4;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
+        if (Input.GetKeyDown(KeyCode.Alpha6) && availableWeapons[6])
         {
             currentWeapon = 5;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6))
+        if (Input.GetKeyDown(KeyCode.Alpha7) && availableWeapons[7])
         {
             currentWeapon = 6;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7))
+        if (Input.GetKeyDown(KeyCode.Alpha8) && availableWeapons[8])
         {
             currentWeapon = 7;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8))
+        if (Input.GetKeyDown(KeyCode.Alpha9) && availableWeapons[9])
         {
             currentWeapon = 8;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9))
-        {
-            currentWeapon = 9;
         }
     }
 }

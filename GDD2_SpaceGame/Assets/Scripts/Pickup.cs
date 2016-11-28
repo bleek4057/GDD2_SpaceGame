@@ -4,15 +4,25 @@ using System.Collections;
 public class Pickup : MonoBehaviour {
 
     //the kind of weapon the pickup has
-    GameObject weapon;
+    public int weaponIndex;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update ()
+    {
+	    
 	}
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<NoGravFPSController>().inventory.addWeapon(weaponIndex);
+        }
+    }
 }

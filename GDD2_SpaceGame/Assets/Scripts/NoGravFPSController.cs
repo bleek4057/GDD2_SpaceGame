@@ -7,6 +7,7 @@ public class NoGravFPSController : MonoBehaviour {
     public float jumpPower;
     public float mouseSensitvity;
     public float rollPower;
+    public GameManager inventory;
 
     private Rigidbody body;
     private float yaw;
