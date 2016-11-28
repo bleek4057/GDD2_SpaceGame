@@ -13,6 +13,11 @@ public class NoGravFPSController : MonoBehaviour {
     private float pitch;
     private float roll;
 
+    public Rigidbody Body
+    {
+        get { return body; }
+    }
+
 	// Use this for initialization
 	void Start ()
     {

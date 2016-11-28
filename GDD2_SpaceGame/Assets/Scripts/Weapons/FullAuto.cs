@@ -12,4 +12,5 @@ public class FullAuto : MonoBehaviour {
 	void Update () {
 	
 	}
+
 }
