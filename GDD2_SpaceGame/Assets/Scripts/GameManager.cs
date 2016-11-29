@@ -3,9 +3,11 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
+    public NoGravFPSController owner = null;
+
     //array for the weapons
     public int currentWeapon;
-    public GameObject[] weapons; // Add weapon prefabs in Editor
+    public SemiAuto pistolPrefab; // Add weapon prefabs in Editor
 
     bool[] availableWeapons;
 

@@ -23,6 +23,7 @@ public class Pickup : MonoBehaviour {
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<NoGravFPSController>().inventory.addWeapon(weaponIndex);
+
         }
     }
 }
