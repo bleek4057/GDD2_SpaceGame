@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 34477ad43a8fc7041b0a0f0b96d6a346
-timeCreated: 1480436644
+guid: 58f0f0ef52c3ef44f8b34b0ca484ecc4
+timeCreated: 1480438990
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: AR_Mesh
+    4300000: Sphere
     7400000: Default Take
     9500000: //RootNode
   materials:
