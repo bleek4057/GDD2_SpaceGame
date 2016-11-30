@@ -26,18 +26,22 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        //Semi Auto
 	    if(Input.GetKeyDown(KeyCode.Alpha1) && availableWeapons[1])
         {
             currentWeapon = 0;
         }
+        //Laser
         if (Input.GetKeyDown(KeyCode.Alpha2) && availableWeapons[2])
         {
             currentWeapon = 1;
         }
+        //Full Auto
         if (Input.GetKeyDown(KeyCode.Alpha3) && availableWeapons[3])
         {
             currentWeapon = 2;
         }
+        //Shotgun
         if (Input.GetKeyDown(KeyCode.Alpha4) && availableWeapons[4])
         {
             currentWeapon = 3;
