@@ -7,27 +7,46 @@ public class NoGravFPSController : MonoBehaviour {
     public float jumpPower;
     public float mouseSensitvity;
     public float maxForce;
-    public GameManager inventory;
 
     private Rigidbody body;
+    private Inventory inventory;
     private float yaw;
     private float pitch;
+    private bool mouseHeld;
 
     public Rigidbody Body
     {
         get { return body; }
     }
 
+    public Inventory getInventory
+    {
+        get { return inventory; }
+    }
+
 	// Use this for initialization
 	void Start ()
     {
         body = GetComponent<Rigidbody>();
+        inventory = GetComponent<Inventory>();
+        inventory.setOwner();
+        mouseHeld = false;
     }
 
     void Update()
     {
         yaw += mouseSensitvity * Input.GetAxis("Mouse X");
         pitch -= mouseSensitvity * Input.GetAxis("Mouse Y");
+        
+        if (Input.GetMouseButton(0))
+        {
+            inventory.fireActiveWeapon(mouseHeld);
+            mouseHeld = true;
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            mouseHeld = false;
+        }
 
         transform.localEulerAngles = new Vector3(pitch, yaw, 0);
     }
