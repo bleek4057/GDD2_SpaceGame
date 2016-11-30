@@ -6,13 +6,12 @@ public class NoGravFPSController : MonoBehaviour {
     public float impulsePower;
     public float jumpPower;
     public float mouseSensitvity;
-    public float rollPower;
+    public float maxForce;
     public GameManager inventory;
 
     private Rigidbody body;
     private float yaw;
     private float pitch;
-    private float roll;
 
     public Rigidbody Body
     {
@@ -29,10 +28,8 @@ public class NoGravFPSController : MonoBehaviour {
     {
         yaw += mouseSensitvity * Input.GetAxis("Mouse X");
         pitch -= mouseSensitvity * Input.GetAxis("Mouse Y");
-        //roll -= rollPower * Input.GetAxis("Roll");
-        roll = 0;
 
-        transform.localEulerAngles = new Vector3(pitch, yaw, roll);
+        transform.localEulerAngles = new Vector3(pitch, yaw, 0);
     }
 	
 	// Update is called once per frame
@@ -42,8 +39,12 @@ public class NoGravFPSController : MonoBehaviour {
         float vz = Input.GetAxis("Vertical");
         float vy = Input.GetAxis("VerticalStrafe");
 
-        body.AddForce(transform.right * vx * impulsePower);
-        body.AddForce(transform.forward * vz * impulsePower);
-        body.AddForce(transform.up * vy * impulsePower);
+        Vector3 force = new Vector3(vx, vy, vz) * impulsePower;
+
+        body.AddForce(transform.right * force.x, ForceMode.Force);
+        body.AddForce(transform.forward * force.z, ForceMode.Force);
+        body.AddForce(transform.up * force.y, ForceMode.Force);
+
+        body.velocity = Vector3.ClampMagnitude(body.velocity, maxForce);
     }
 }
