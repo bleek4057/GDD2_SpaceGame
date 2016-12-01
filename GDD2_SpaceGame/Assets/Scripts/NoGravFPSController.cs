@@ -5,6 +5,7 @@ public class NoGravFPSController : MonoBehaviour {
 
     public float impulsePower;
     public float jumpPower;
+    public float jumpRadius;
     public float mouseSensitvity;
     public float maxForce;
 
@@ -46,6 +47,44 @@ public class NoGravFPSController : MonoBehaviour {
         if(Input.GetMouseButtonUp(0))
         {
             mouseHeld = false;
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, jumpRadius);
+            Collider closest = null;
+            foreach (Collider collider in colliders)
+            {
+                if (collider != GetComponent<Collider>())
+                {
+                    if (closest == null)
+                    {
+                        closest = collider;
+                    }
+                    else
+                    {
+                        float closestDistance = (transform.position - closest.ClosestPointOnBounds(transform.position)).magnitude;
+                        float newDistance = (transform.position - collider.ClosestPointOnBounds(transform.position)).magnitude;
+
+                        if (newDistance < closestDistance)
+                        {
+                            closest = collider;
+                        }
+                    }
+                }
+            }
+
+            if (closest != null)
+            {
+                Debug.Log(transform.position + " " + closest.ClosestPointOnBounds(transform.position));
+                Vector3 direction = transform.position - closest.ClosestPointOnBounds(transform.position);
+                direction.Normalize();
+                direction *= jumpPower;
+
+                Debug.Log(direction);
+
+                body.AddForce(direction);
+            }
         }
 
         transform.localEulerAngles = new Vector3(pitch, yaw, 0);
