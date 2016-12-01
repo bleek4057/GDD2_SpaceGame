@@ -18,6 +18,7 @@ public class Pickup : MonoBehaviour {
 	    
 	}
 
+    //Collision
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
