@@ -1719,6 +1719,61 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e46f27ec2972a240bea0ae069b3426d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &549077412 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011999747674, guid: 1e46f27ec2972a240bea0ae069b3426d,
+    type: 2}
+  m_PrefabInternal: {fileID: 549077411}
+--- !u!114 &549077413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 549077412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cf9f4cb8709114a8418ad67c12d3d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 92341963}
+  weaponWheelImages:
+  - {fileID: 549077418}
+  - {fileID: 549077417}
+  - {fileID: 549077416}
+  - {fileID: 549077415}
+  - {fileID: 549077414}
+  selectedWeaponTabHeight: 10
+  selectedWeaponImageScalar: 1.5
+--- !u!114 &549077414 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012454290762, guid: 1e46f27ec2972a240bea0ae069b3426d,
+    type: 2}
+  m_PrefabInternal: {fileID: 549077411}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &549077415 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012776894292, guid: 1e46f27ec2972a240bea0ae069b3426d,
+    type: 2}
+  m_PrefabInternal: {fileID: 549077411}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &549077416 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011453322564, guid: 1e46f27ec2972a240bea0ae069b3426d,
+    type: 2}
+  m_PrefabInternal: {fileID: 549077411}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &549077417 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000010679792006, guid: 1e46f27ec2972a240bea0ae069b3426d,
+    type: 2}
+  m_PrefabInternal: {fileID: 549077411}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &549077418 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011466419384, guid: 1e46f27ec2972a240bea0ae069b3426d,
+    type: 2}
+  m_PrefabInternal: {fileID: 549077411}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &568323112
 GameObject:
   m_ObjectHideFlags: 0
