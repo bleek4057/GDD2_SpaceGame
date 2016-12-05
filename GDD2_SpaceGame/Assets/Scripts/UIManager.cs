@@ -5,36 +5,30 @@ using System.Collections;
 public class UIManager : MonoBehaviour {
     public GameObject player;
 
-    public Image[] weaponWheelImages;
+    private Inventory inven;
 
-    private Vector3 origWeaponTabScale;
-    private Vector3 selectedWeaponTabScale;
-    
-    private float origWeaponTabHeight;
-    public float selectedWeaponTabHeight;
+    public Animator[] weaponTabs;
 
-    public float selectedWeaponImageScalar;
-
-    private Inventory inventory;
-    private NoGravFPSController fpsController;
+    private int displayed; //What weapon are we displaying on the weapon wheel
+    private int invenCurrentWeapon; //What weapon should we be displaying on the weapon wheel
 
 	void Start () {
-        inventory = player.GetComponent<Inventory>();
-        selectedWeaponTabScale = new Vector3(selectedWeaponImageScalar, selectedWeaponImageScalar, 0);
-        origWeaponTabScale = weaponWheelImages[0].transform.localScale;
-        origWeaponTabHeight = weaponWheelImages[0].transform.localPosition.y;
-
+        inven = player.GetComponent<Inventory>();
     }
 	
 	void Update () {
-        for(int i = 0; i < weaponWheelImages.Length; i++){
-            if (i == inventory.currentWeapon) {
-                //weaponWheelImages[i].transform.localScale = selectedWeaponTabScale;
-                weaponWheelImages[i].rectTransform.localPosition = new Vector3(weaponWheelImages[i].transform.localPosition.x, origWeaponTabHeight, weaponWheelImages[i].transform.localPosition.z);
-            }else {
-                //weaponWheelImages[i].transform.localScale = origWeaponTabScale;
-                weaponWheelImages[i].rectTransform.localPosition = new Vector3(weaponWheelImages[i].transform.localPosition.x, origWeaponTabHeight, weaponWheelImages[i].transform.localPosition.z);
-            }
+        invenCurrentWeapon = inven.currentWeapon;
+        
+        if(displayed != invenCurrentWeapon) {
+            ChangeDisplayedWeapon(invenCurrentWeapon);
         }
 	}
+
+    void ChangeDisplayedWeapon(int i) {
+        print(i);
+        weaponTabs[displayed].enabled = false;
+        weaponTabs[i].enabled = true;
+
+        displayed = i;
+    }
 }
