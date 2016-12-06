@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Shotgun : MonoBehaviour
 {
-    public NoGravFPSController owner = null;
+    public NoGravFPSController owner;
     public float kickback;
     public float fireRate;
+    public int damage;
 
     //private float count;
     private bool ableToFire;
@@ -24,7 +25,7 @@ public class Shotgun : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) { ableToFire = true; }
     }
 
-    public bool Fire(float count, bool mouseHeld)
+    public bool Fire(ref float count, bool mouseHeld)
     {
         if (count >= fireRate && !mouseHeld)
         {
@@ -32,8 +33,21 @@ public class Shotgun : MonoBehaviour
             ableToFire = false;
 
             owner.Body.AddForce(kickback * (-owner.transform.forward), ForceMode.Impulse);
-            Debug.DrawRay(owner.transform.position, owner.transform.forward, Color.red, 5);
-            return Physics.Raycast(owner.transform.position, owner.transform.forward, 25, 8);
+            Debug.DrawRay(owner.transform.position, owner.transform.forward * 15, Color.red, 5);
+            owner.muzzleFlash().Emit(3);
+            owner.muzzleFlash().Stop();
+
+            RaycastHit hit;
+            if (Physics.Raycast(owner.transform.position, owner.transform.forward, out hit, 15f))
+            {
+                if (hit.collider.gameObject.tag == "Player")
+                {
+                    hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
+                    hit.collider.GetComponentInParent<NoGravFPSController>().TakeDamage(damage);
+                    return true;
+                }
+            }
+            return false;
         }
 
         return false;

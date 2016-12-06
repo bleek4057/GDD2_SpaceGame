@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour {
         if(displayed != invenCurrentWeapon) {
             ChangeDisplayedWeapon(invenCurrentWeapon);
         }
+
+        
 	}
 
     void ChangeDisplayedWeapon(int i) {

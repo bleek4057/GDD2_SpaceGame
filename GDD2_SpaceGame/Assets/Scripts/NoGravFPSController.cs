@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class NoGravFPSController : MonoBehaviour {
@@ -8,9 +9,12 @@ public class NoGravFPSController : MonoBehaviour {
     public float jumpRadius;
     public float mouseSensitvity;
     public float maxForce;
+    public int health;
+    public Text healthText;
 
     private Rigidbody body;
     private Inventory inventory;
+    private ParticleSystem[] particleSystems;
     private float yaw;
     private float pitch;
     private bool mouseHeld;
@@ -25,13 +29,38 @@ public class NoGravFPSController : MonoBehaviour {
         get { return inventory; }
     }
 
+    public ParticleSystem muzzleFlash()
+    {
+        return particleSystems[1];
+    }
+
+    public ParticleSystem laserBeam()
+    {
+        return particleSystems[0];
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            particleSystems[2].Emit(5);
+            gameObject.SetActive(false);
+        }
+
+        healthText.text = health.ToString();
+    }
+
 	// Use this for initialization
 	void Start ()
     {
         body = GetComponent<Rigidbody>();
         inventory = GetComponent<Inventory>();
+        particleSystems = GetComponentsInChildren<ParticleSystem>();
         inventory.setOwner();
         mouseHeld = false;
+        healthText.text = health.ToString();
     }
 
     void Update()
@@ -47,6 +76,7 @@ public class NoGravFPSController : MonoBehaviour {
         if(Input.GetMouseButtonUp(0))
         {
             mouseHeld = false;
+            laserBeam().Clear();
         }
 
         if (Input.GetButtonDown("Jump"))

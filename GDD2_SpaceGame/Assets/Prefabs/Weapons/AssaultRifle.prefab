@@ -19,6 +19,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011047003032}
+  - 33: {fileID: 33000012330790822}
+  - 23: {fileID: 23000013614014158}
+  - 95: {fileID: 95000013265548082}
   - 114: {fileID: 114000011804482244}
   m_Layer: 0
   m_Name: AssaultRifle
@@ -33,13 +36,69 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010303707932}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6367955, y: 12.243254, z: 2.1146011}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!23 &23000013614014158
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010303707932}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b8e786f9a77b29340a10ed8aed5f592e, type: 2}
+  - {fileID: 2100000, guid: ac5f9154914c85143a1fb99d6c76014b, type: 2}
+  - {fileID: 2100000, guid: 4f092591235524e44849be4457e8709c, type: 2}
+  - {fileID: 2100000, guid: 7aba693520995aa4184fbdb81a3feaae, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &33000012330790822
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010303707932}
+  m_Mesh: {fileID: 4300000, guid: 34477ad43a8fc7041b0a0f0b96d6a346, type: 3}
+--- !u!95 &95000013265548082
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010303707932}
+  m_Enabled: 0
+  m_Avatar: {fileID: 9000000, guid: 34477ad43a8fc7041b0a0f0b96d6a346, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000011804482244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   kickback: 5
-  fireRate: 0.75
+  fireRate: 0.5

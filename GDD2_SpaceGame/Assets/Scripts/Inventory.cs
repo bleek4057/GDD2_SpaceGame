@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour {
     public int currentWeapon;
 
     public SemiAuto pistolPrefab; // Add weapon prefabs in Editor
+    public Laser laserPrefab;
     public FullAuto assaultRifle;
     public Shotgun shotgun;
 
@@ -26,15 +27,16 @@ public class Inventory : MonoBehaviour {
         switch (currentWeapon)
         {
             case 0:
-                pistolPrefab.Fire(weaponLastFired, mouseHeld);
+                pistolPrefab.Fire(ref weaponLastFired, mouseHeld);
                 break;
             case 1:
+                laserPrefab.Fire(ref weaponLastFired, mouseHeld);
                 break;
             case 2:
-                assaultRifle.Fire(weaponLastFired, mouseHeld);
+                assaultRifle.Fire(ref weaponLastFired, mouseHeld);
                 break;
             case 3:
-                shotgun.Fire(weaponLastFired, mouseHeld);
+                shotgun.Fire(ref weaponLastFired, mouseHeld);
                 break;
         }
     }
@@ -43,8 +45,48 @@ public class Inventory : MonoBehaviour {
     {
         owner = GetComponent<NoGravFPSController>();
         pistolPrefab.owner = owner;
+        laserPrefab.owner = owner;
         assaultRifle.owner = owner;
         shotgun.owner = owner;
+    }
+
+    void switchWeapon(int newActive)
+    {
+        switch (currentWeapon)
+        {
+            case 0:
+                pistolPrefab.gameObject.SetActive(false);
+                break;
+            case 1:
+                laserPrefab.gameObject.SetActive(false);
+                break;
+            case 2:
+                assaultRifle.gameObject.SetActive(false);
+                break;
+            case 3:
+                shotgun.gameObject.SetActive(false);
+                break;
+        }
+
+        switch (newActive)
+        {
+            case 0:
+                pistolPrefab.gameObject.SetActive(true);
+                currentWeapon = 0;
+                break;
+            case 1:
+                laserPrefab.gameObject.SetActive(true);
+                currentWeapon = 1;
+                break;
+            case 2:
+                assaultRifle.gameObject.SetActive(true);
+                currentWeapon = 2;
+                break;
+            case 3:
+                shotgun.gameObject.SetActive(true);
+                currentWeapon = 3;
+                break;
+        }
     }
 
     // Use this for initialization
@@ -55,6 +97,7 @@ public class Inventory : MonoBehaviour {
         availableWeapons = new bool[10];
 
         availableWeapons[0] = true;
+        availableWeapons[1] = true;
         availableWeapons[2] = true;
         availableWeapons[3] = true;
 	}
@@ -68,44 +111,25 @@ public class Inventory : MonoBehaviour {
 	    if(Input.GetKeyDown(KeyCode.Alpha1) && availableWeapons[0])
         {
             Debug.Log("Switch weapon to Pistol");
-            currentWeapon = 0;
+            switchWeapon(0);
         }
         //Laser
         if (Input.GetKeyDown(KeyCode.Alpha2) && availableWeapons[1])
         {
-            currentWeapon = 1;
+            Debug.Log("Switch weapon to Laser");
+            switchWeapon(1);
         }
         //Full Auto
         if (Input.GetKeyDown(KeyCode.Alpha3) && availableWeapons[2])
         {
             Debug.Log("Switch weapon to Assault Rifle");
-            currentWeapon = 2;
+            switchWeapon(2);
         }
         //Shotgun
         if (Input.GetKeyDown(KeyCode.Alpha4) && availableWeapons[3])
         {
             Debug.Log("Switch weapon to Shotgun");
-            currentWeapon = 3;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5) && availableWeapons[4])
-        {
-            currentWeapon = 4;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6) && availableWeapons[5])
-        {
-            currentWeapon = 5;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7) && availableWeapons[6])
-        {
-            currentWeapon = 6;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha8) && availableWeapons[7])
-        {
-            currentWeapon = 7;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha9) && availableWeapons[8])
-        {
-            currentWeapon = 8;
+            switchWeapon(3);
         }
     }
 }
