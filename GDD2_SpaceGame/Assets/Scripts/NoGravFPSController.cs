@@ -11,6 +11,7 @@ public class NoGravFPSController : MonoBehaviour {
     public float maxForce;
     public int health;
     public Text healthText;
+    public GameObject spawn;
 
     private Rigidbody body;
     private Inventory inventory;
@@ -50,6 +51,14 @@ public class NoGravFPSController : MonoBehaviour {
         }
 
         healthText.text = health.ToString();
+    }
+
+    public void CheckHealth()
+    {
+        if(health <= 0)
+        {
+            this.transform.position = spawn.transform.position;
+        }
     }
 
 	// Use this for initialization
@@ -118,6 +127,7 @@ public class NoGravFPSController : MonoBehaviour {
         }
 
         transform.localEulerAngles = new Vector3(pitch, yaw, 0);
+        CheckHealth();
     }
 	
 	// Update is called once per frame
