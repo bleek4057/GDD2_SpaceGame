@@ -27,18 +27,23 @@ public class Inventory : MonoBehaviour {
         switch (currentWeapon)
         {
             case 0:
-                pistolPrefab.Fire(ref weaponLastFired, mouseHeld);
+                pistolPrefab.Fire(mouseHeld);
                 break;
             case 1:
-                laserPrefab.Fire(ref weaponLastFired, mouseHeld);
+                laserPrefab.Fire(mouseHeld);
                 break;
             case 2:
-                assaultRifle.Fire(ref weaponLastFired, mouseHeld);
+                assaultRifle.Fire(mouseHeld);
                 break;
             case 3:
-                shotgun.Fire(ref weaponLastFired, mouseHeld);
+                shotgun.Fire(mouseHeld);
                 break;
         }
+    }
+
+    public void ResetWeaponCool()
+    {
+        weaponLastFired = 0;
     }
 
     public void setOwner()

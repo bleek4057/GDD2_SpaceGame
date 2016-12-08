@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000011352915214}
   - 95: {fileID: 95000010218271498}
   - 114: {fileID: 114000014286576316}
+  - 114: {fileID: 114000010188413050}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -128,6 +129,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010188413050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010319936392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 48
+    i1: 121
+    i2: 176
+    i3: 29
+    i4: 141
+    i5: 145
+    i6: 126
+    i7: 68
+    i8: 26
+    i9: 83
+    i10: 145
+    i11: 158
+    i12: 201
+    i13: 91
+    i14: 146
+    i15: 179
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114000014286576316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,3 +175,4 @@ MonoBehaviour:
   owner: {fileID: 0}
   kickback: 5
   fireRate: 1
+  damage: 0

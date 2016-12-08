@@ -1,0 +1,51 @@
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 745M (ID=0xfe3)
+    Vendor:   NVIDIA
+    VRAM:     2019 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.395 seconds
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.082391 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 3d90 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+The prefab 'ZeroG Controller' has multiple NetworkIdentity components. There can only be one NetworkIdentity on a prefab, and it must be on the root object.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+UnloadTime: 2.722871 ms
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+The prefab 'ZeroG Controller' has multiple NetworkIdentity components. There can only be one NetworkIdentity on a prefab, and it must be on the root object.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 910.
+Total: 0.693226 ms (FindLiveObjects: 0.060299 ms CreateObjectMapping: 0.051746 ms MarkObjects: 0.550390 ms  DeleteObjects: 0.029935 ms)
+
+Trying to send command for object without authority.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:61074}

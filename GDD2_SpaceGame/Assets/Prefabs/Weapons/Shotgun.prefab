@@ -199,4 +199,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   kickback: 50
-  fireRate: 5
+  fireRate: 3.5
+  damage: 0

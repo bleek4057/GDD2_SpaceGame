@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class NoGravFPSController : MonoBehaviour {
-
+public class NoGravFPSController : NetworkBehaviour
+{
     public float impulsePower;
     public float jumpPower;
     public float jumpRadius;
     public float mouseSensitvity;
     public float maxForce;
-    public int health;
     public Text healthText;
 
     private Rigidbody body;
@@ -29,42 +29,44 @@ public class NoGravFPSController : MonoBehaviour {
         get { return inventory; }
     }
 
-    public ParticleSystem muzzleFlash()
-    {
-        return particleSystems[1];
-    }
-
     public ParticleSystem laserBeam()
     {
         return particleSystems[0];
     }
 
-    public void TakeDamage(int damage)
+    public ParticleSystem muzzleFlash()
     {
-        health -= damage;
-
-        if (health <= 0)
-        {
-            particleSystems[2].Emit(5);
-            gameObject.SetActive(false);
-        }
-
-        healthText.text = health.ToString();
+        return particleSystems[1];
     }
 
-	// Use this for initialization
-	void Start ()
+    [ClientRpc]
+    public void RpcApplyImpulse(float impulse, Vector3 direction)
+    {
+        body.AddForce(impulse * (direction), ForceMode.Impulse);
+    }
+
+    // Use this for initialization
+    void Start ()
     {
         body = GetComponent<Rigidbody>();
         inventory = GetComponent<Inventory>();
         particleSystems = GetComponentsInChildren<ParticleSystem>();
         inventory.setOwner();
         mouseHeld = false;
-        healthText.text = health.ToString();
+        //healthText.text = health.ToString();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        GetComponentInChildren<Camera>().enabled = true;
     }
 
     void Update()
     {
+        if (!isLocalPlayer) { return; }
+
         yaw += mouseSensitvity * Input.GetAxis("Mouse X");
         pitch -= mouseSensitvity * Input.GetAxis("Mouse Y");
         
@@ -123,6 +125,8 @@ public class NoGravFPSController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+        if (!isLocalPlayer) { return; }
+
         float vx = Input.GetAxis("Horizontal");
         float vz = Input.GetAxis("Vertical");
         float vy = Input.GetAxis("VerticalStrafe");
