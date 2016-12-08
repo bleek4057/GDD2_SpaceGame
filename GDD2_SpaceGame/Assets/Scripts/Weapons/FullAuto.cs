@@ -23,11 +23,10 @@ public class FullAuto : NetworkBehaviour
         count += Time.deltaTime;
     }
 
-    [Command]
-    void CmdTestHit()
+    void TestHit(Transform player)
     {
         RaycastHit hit;
-        if (Physics.Raycast(owner.transform.position, owner.transform.forward, out hit, 15f))
+        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, 15f))
         {
             if (hit.collider.gameObject.tag == "Player")
             {
@@ -42,7 +41,7 @@ public class FullAuto : NetworkBehaviour
         }
     }
 
-    public void Fire(bool mouseHeld)
+    public void Fire(bool mouseHeld, Transform player)
     {
         if (count >= fireRate && mouseHeld)
         {
@@ -50,12 +49,11 @@ public class FullAuto : NetworkBehaviour
 
             GetComponentInParent<Inventory>().ResetWeaponCool();
 
-            owner.Body.AddForce(kickback * (-owner.transform.forward), ForceMode.Impulse);
-            Debug.DrawRay(owner.transform.position, owner.transform.forward * 25, Color.red, 5);
-            owner.muzzleFlash().Emit(3);
-            owner.muzzleFlash().Stop();
+            owner.Body.AddForce(kickback * (-player.transform.forward), ForceMode.Impulse);
+            Debug.DrawRay(player.transform.position, player.transform.forward * 25, Color.red, 5);
+            owner.RpcMuzzleFlash();
 
-            CmdTestHit();
+            TestHit(player);
         }
     }
 }

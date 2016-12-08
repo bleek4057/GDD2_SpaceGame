@@ -23,11 +23,10 @@ public class Laser : NetworkBehaviour
 
     }
 
-    [Command]
-    void CmdTestHit()
+    void TestHit(Transform player)
     {
         RaycastHit hit;
-        if (Physics.Raycast(owner.transform.position, owner.transform.forward, out hit, 15f))
+        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, 15f))
         {
             if (hit.collider.gameObject.tag == "Player")
             {
@@ -42,18 +41,18 @@ public class Laser : NetworkBehaviour
         }
     }
 
-    public void Fire(bool mouseHeld)
+    public void Fire(bool mouseHeld, Transform player)
     {
         if (count >= fireRate && mouseHeld)
         {
             count = 0;
             //GetComponentInParent<Inventory>().ResetWeaponCool();
 
-            owner.Body.AddForce(kickback * (-owner.transform.forward), ForceMode.Impulse);
-            Debug.DrawRay(owner.transform.position, owner.transform.forward * 10, Color.red, 1);
-            owner.laserBeam().Emit(1);
+            owner.Body.AddForce(kickback * (-player.transform.forward), ForceMode.Impulse);
+            Debug.DrawRay(player.transform.position, player.transform.forward * 10, Color.red, 1);
+            owner.RpcLaserBeam();
 
-            CmdTestHit();
+            TestHit(player);
         }
     }
 }

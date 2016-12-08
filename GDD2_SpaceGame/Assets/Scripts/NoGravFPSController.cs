@@ -29,14 +29,18 @@ public class NoGravFPSController : NetworkBehaviour
         get { return inventory; }
     }
 
-    public ParticleSystem laserBeam()
+    [ClientRpc]
+    public void RpcLaserBeam()
     {
-        return particleSystems[0];
+        particleSystems[0].Emit(1);
     }
 
-    public ParticleSystem muzzleFlash()
+    [ClientRpc]
+    public void RpcMuzzleFlash()
     {
-        return particleSystems[1];
+        particleSystems[1].Emit(3);
+        particleSystems[1].Stop();
+        //return particleSystems[1];
     }
 
     [ClientRpc]
@@ -72,13 +76,13 @@ public class NoGravFPSController : NetworkBehaviour
         
         if (Input.GetMouseButton(0))
         {
-            inventory.fireActiveWeapon(mouseHeld);
+            inventory.CmdFireActiveWeapon(mouseHeld, transform.forward);
             mouseHeld = true;
         }
         if(Input.GetMouseButtonUp(0))
         {
             mouseHeld = false;
-            laserBeam().Clear();
+            particleSystems[0].Clear();
         }
 
         if (Input.GetButtonDown("Jump"))

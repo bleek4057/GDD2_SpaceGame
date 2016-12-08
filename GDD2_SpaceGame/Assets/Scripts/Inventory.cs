@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : NetworkBehaviour {
 
     NoGravFPSController owner;
 
@@ -22,21 +23,22 @@ public class Inventory : MonoBehaviour {
         pistolPrefab.owner = owner;
     }
 
-    public void fireActiveWeapon(bool mouseHeld)
+    [Command]
+    public void CmdFireActiveWeapon(bool mouseHeld, Vector3 localForward)
     {
         switch (currentWeapon)
         {
             case 0:
-                pistolPrefab.Fire(mouseHeld);
+                pistolPrefab.Fire(mouseHeld, localForward);
                 break;
             case 1:
-                laserPrefab.Fire(mouseHeld);
+                laserPrefab.Fire(mouseHeld, transform);
                 break;
             case 2:
-                assaultRifle.Fire(mouseHeld);
+                assaultRifle.Fire(mouseHeld, transform);
                 break;
             case 3:
-                shotgun.Fire(mouseHeld);
+                shotgun.Fire(mouseHeld, transform);
                 break;
         }
     }

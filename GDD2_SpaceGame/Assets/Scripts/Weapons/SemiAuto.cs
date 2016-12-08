@@ -23,11 +23,10 @@ public class SemiAuto : NetworkBehaviour
         count += Time.deltaTime;
     }
 
-    [Command]
-    void CmdTestHit()
+    void TestHit(Vector3 localForward)
     {
         RaycastHit hit;
-        if (Physics.Raycast(owner.transform.position, owner.transform.forward, out hit, 15f))
+        if (Physics.Raycast(owner.transform.position + (localForward), localForward, out hit, 15f))
         {
             if (hit.collider.gameObject.tag == "Player")
             {
@@ -42,19 +41,18 @@ public class SemiAuto : NetworkBehaviour
         }
     }
 
-    public void Fire(bool mouseHeld)
+    public void Fire(bool mouseHeld, Vector3 localForward)
     {
         if (count >= fireRate && !mouseHeld)
         {
             count = 0;
             //GetComponentInParent<Inventory>().ResetWeaponCool();
 
-            owner.Body.AddForce(kickback * (-owner.transform.forward), ForceMode.Impulse);
-            Debug.DrawRay(owner.transform.position, owner.transform.forward * 25, Color.red, 1);
-            owner.muzzleFlash().Emit(3);
-            owner.muzzleFlash().Stop();
+            owner.RpcApplyImpulse(kickback, -localForward);
+            Debug.DrawRay(owner.transform.position + (localForward), localForward * 25, Color.red, 1);
+            owner.RpcMuzzleFlash();
 
-            CmdTestHit();
+            TestHit(localForward);
         }
     }
 }
