@@ -7,7 +7,7 @@ public class FullAuto : NetworkBehaviour
     public NoGravFPSController owner;
     public float kickback;
     public float fireRate;
-    public int damage;
+    public float damage;
 
     private float count;
 
@@ -23,14 +23,14 @@ public class FullAuto : NetworkBehaviour
         count += Time.deltaTime;
     }
 
-    void TestHit(Transform player)
+    void TestHit(Vector3 localForward)
     {
         RaycastHit hit;
-        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, 15f))
+        if (Physics.Raycast(owner.transform.position, localForward, out hit, 25f))
         {
             if (hit.collider.gameObject.tag == "Player")
             {
-                hit.collider.GetComponentInParent<NoGravFPSController>().RpcApplyImpulse(kickback, -hit.normal);
+                hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
 
                 Health health = hit.collider.GetComponentInParent<Health>();
                 if (health != null)
@@ -41,7 +41,7 @@ public class FullAuto : NetworkBehaviour
         }
     }
 
-    public void Fire(bool mouseHeld, Transform player)
+    public void Fire(bool mouseHeld, Vector3 localForward)
     {
         if (count >= fireRate && mouseHeld)
         {
@@ -49,11 +49,11 @@ public class FullAuto : NetworkBehaviour
 
             GetComponentInParent<Inventory>().ResetWeaponCool();
 
-            owner.Body.AddForce(kickback * (-player.transform.forward), ForceMode.Impulse);
-            Debug.DrawRay(player.transform.position, player.transform.forward * 25, Color.red, 5);
+            owner.RpcApplyImpulse(kickback, -localForward);
+            Debug.DrawRay(owner.transform.position, localForward * 25, Color.red, 5);
             owner.RpcMuzzleFlash();
 
-            TestHit(player);
+            TestHit(localForward);
         }
     }
 }

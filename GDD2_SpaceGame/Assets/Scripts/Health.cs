@@ -12,11 +12,11 @@ public class Health : NetworkBehaviour
 
     public RectTransform healthBar;
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if(!isServer) { return; }
 
-        currentHealth -= amount;
+        currentHealth -= (int)amount;
         if(currentHealth <= 0)
         {
             currentHealth = 0;

@@ -7,7 +7,7 @@ public class SemiAuto : NetworkBehaviour
     public NoGravFPSController owner;
     public float kickback;
     public float fireRate;
-    public int damage;
+    public float damage;
 
     private float count;
 

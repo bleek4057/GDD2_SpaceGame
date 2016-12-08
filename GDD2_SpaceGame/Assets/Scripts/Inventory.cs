@@ -7,6 +7,7 @@ public class Inventory : NetworkBehaviour {
     NoGravFPSController owner;
 
     //array for the weapons
+    [SyncVar(hook = "SwitchWeapon")]
     public int currentWeapon;
 
     public SemiAuto pistolPrefab; // Add weapon prefabs in Editor
@@ -32,13 +33,13 @@ public class Inventory : NetworkBehaviour {
                 pistolPrefab.Fire(mouseHeld, localForward);
                 break;
             case 1:
-                laserPrefab.Fire(mouseHeld, transform);
+                laserPrefab.Fire(mouseHeld, localForward);
                 break;
             case 2:
-                assaultRifle.Fire(mouseHeld, transform);
+                assaultRifle.Fire(mouseHeld, localForward);
                 break;
             case 3:
-                shotgun.Fire(mouseHeld, transform);
+                shotgun.Fire(mouseHeld, localForward);
                 break;
         }
     }
@@ -57,41 +58,32 @@ public class Inventory : NetworkBehaviour {
         shotgun.owner = owner;
     }
 
-    void switchWeapon(int newActive)
+    [Command]
+    void CmdSetWeapon(int num)
     {
+        currentWeapon = num;
+    }
+
+    void SwitchWeapon(int currentWeapon)
+    {
+        pistolPrefab.gameObject.SetActive(false);
+        laserPrefab.gameObject.SetActive(false);
+        assaultRifle.gameObject.SetActive(false);
+        shotgun.gameObject.SetActive(false);
+
         switch (currentWeapon)
         {
             case 0:
-                pistolPrefab.gameObject.SetActive(false);
-                break;
-            case 1:
-                laserPrefab.gameObject.SetActive(false);
-                break;
-            case 2:
-                assaultRifle.gameObject.SetActive(false);
-                break;
-            case 3:
-                shotgun.gameObject.SetActive(false);
-                break;
-        }
-
-        switch (newActive)
-        {
-            case 0:
                 pistolPrefab.gameObject.SetActive(true);
-                currentWeapon = 0;
                 break;
             case 1:
                 laserPrefab.gameObject.SetActive(true);
-                currentWeapon = 1;
                 break;
             case 2:
                 assaultRifle.gameObject.SetActive(true);
-                currentWeapon = 2;
                 break;
             case 3:
                 shotgun.gameObject.SetActive(true);
-                currentWeapon = 3;
                 break;
         }
     }
@@ -112,31 +104,34 @@ public class Inventory : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        weaponLastFired += Time.deltaTime;
+        if (isLocalPlayer)
+        {
+            weaponLastFired += Time.deltaTime;
 
-        //Semi Auto
-	    if(Input.GetKeyDown(KeyCode.Alpha1) && availableWeapons[0])
-        {
-            Debug.Log("Switch weapon to Pistol");
-            switchWeapon(0);
-        }
-        //Laser
-        if (Input.GetKeyDown(KeyCode.Alpha2) && availableWeapons[1])
-        {
-            Debug.Log("Switch weapon to Laser");
-            switchWeapon(1);
-        }
-        //Full Auto
-        if (Input.GetKeyDown(KeyCode.Alpha3) && availableWeapons[2])
-        {
-            Debug.Log("Switch weapon to Assault Rifle");
-            switchWeapon(2);
-        }
-        //Shotgun
-        if (Input.GetKeyDown(KeyCode.Alpha4) && availableWeapons[3])
-        {
-            Debug.Log("Switch weapon to Shotgun");
-            switchWeapon(3);
+            //Semi Auto
+            if (Input.GetKeyDown(KeyCode.Alpha1) && availableWeapons[0])
+            {
+                Debug.Log("Switch weapon to Pistol");
+                CmdSetWeapon(0);
+            }
+            //Laser
+            if (Input.GetKeyDown(KeyCode.Alpha2) && availableWeapons[1])
+            {
+                Debug.Log("Switch weapon to Laser");
+                CmdSetWeapon(1);
+            }
+            //Full Auto
+            if (Input.GetKeyDown(KeyCode.Alpha3) && availableWeapons[2])
+            {
+                Debug.Log("Switch weapon to Assault Rifle");
+                CmdSetWeapon(2);
+            }
+            //Shotgun
+            if (Input.GetKeyDown(KeyCode.Alpha4) && availableWeapons[3])
+            {
+                Debug.Log("Switch weapon to Shotgun");
+                CmdSetWeapon(3);
+            }
         }
     }
 }

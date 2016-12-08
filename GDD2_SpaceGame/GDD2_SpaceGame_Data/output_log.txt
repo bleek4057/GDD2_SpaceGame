@@ -16,22 +16,22 @@ Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_S
 Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.336 seconds
+- Completed reload, in  0.269 seconds
 Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.846754 ms
+UnloadTime: 0.864288 ms
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 24a0 -> priority: 1 
+  Thread -> id: 1814 -> priority: 1 
 The prefab 'ZeroG Controller' has multiple NetworkIdentity components. There can only be one NetworkIdentity on a prefab, and it must be on the root object.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.640762 ms
+UnloadTime: 2.039480 ms
 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
@@ -42,17 +42,9 @@ The prefab 'ZeroG Controller' has multiple NetworkIdentity components. There can
 
 
 Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 792.
-Total: 0.795863 ms (FindLiveObjects: 0.051746 ms CreateObjectMapping: 0.052173 ms MarkObjects: 0.654310 ms  DeleteObjects: 0.036778 ms)
+Total: 0.497789 ms (FindLiveObjects: 0.040627 ms CreateObjectMapping: 0.036778 ms MarkObjects: 0.380184 ms  DeleteObjects: 0.039771 ms)
 
 Switch weapon to Assault Rifle
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
-Switch weapon to Assault Rifle
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
-Switch weapon to Shotgun
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
@@ -64,7 +56,11 @@ Switch weapon to Pistol
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-Switch weapon to Pistol
+Switch weapon to Laser
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Switch weapon to Shotgun
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
@@ -72,14 +68,13 @@ Switch weapon to Assault Rifle
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-Switch weapon to Assault Rifle
+Switch weapon to Laser
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:7777}
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 6.555505 ms
+UnloadTime: 2.483813 ms
 
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 452.
-Total: 0.597004 ms (FindLiveObjects: 0.029080 ms CreateObjectMapping: 0.029935 ms MarkObjects: 0.449036 ms  DeleteObjects: 0.088524 ms)
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 449.
+Total: 0.391730 ms (FindLiveObjects: 0.011974 ms CreateObjectMapping: 0.017106 ms MarkObjects: 0.264290 ms  DeleteObjects: 0.097932 ms)
 
