@@ -65,6 +65,7 @@ public class NoGravFPSController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         GetComponentInChildren<Camera>().enabled = true;
+        GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().SetPlayer(gameObject);
     }
 
     void Update()
