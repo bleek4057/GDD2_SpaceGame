@@ -86,6 +86,9 @@ public class Inventory : NetworkBehaviour {
                 shotgun.gameObject.SetActive(true);
                 break;
         }
+
+        //Not super efficient but it works
+        GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().ChangeDisplayedWeapon(currentWeapon);
     }
 
     // Use this for initialization

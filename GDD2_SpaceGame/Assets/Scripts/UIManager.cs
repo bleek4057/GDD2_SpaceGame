@@ -19,19 +19,19 @@ public class UIManager : MonoBehaviour {
     }
 	
 	void Update () {
-        if(inven == null) { return;  }
+        /*if(inven == null) { return; }
         invenCurrentWeapon = inven.currentWeapon;
         
         if(displayed != invenCurrentWeapon) {
             ChangeDisplayedWeapon(invenCurrentWeapon);
-        }   
+        } */  
 	}
 
     public void SetPlayer(GameObject _player) {
         player = _player;
         inven = player.GetComponent<Inventory>();
     }
-    void ChangeDisplayedWeapon(int i) {
+    public void ChangeDisplayedWeapon(int i) {
         //print(i);
         weaponTabs[displayed].enabled = false;
         weaponTabs[i].enabled = true;
