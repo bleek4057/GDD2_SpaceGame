@@ -3,28 +3,25 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class UIManager : MonoBehaviour {
-    public GameObject player;
+    private GameObject player;
+    private Inventory inven;
 
-    public Inventory inven;
+    public Animator matchEndAnim;
+    public Text matchEndText;
 
     public Image[] weaponTabs;
 
     private int displayed; //What weapon are we displaying on the weapon wheel
     private int invenCurrentWeapon; //What weapon should we be displaying on the weapon wheel
 
+    public Text healthText;
+
 	void Start () {
-        //player = GameObject.FindGameObjectWithTag("Player");
-        //inven = player.GetComponent<Inventory>();
         ChangeDisplayedWeapon(0);
     }
 	
 	void Update () {
-        /*if(inven == null) { return; }
-        invenCurrentWeapon = inven.currentWeapon;
-        
-        if(displayed != invenCurrentWeapon) {
-            ChangeDisplayedWeapon(invenCurrentWeapon);
-        } */  
+
 	}
 
     public void SetPlayer(GameObject _player) {
@@ -37,5 +34,18 @@ public class UIManager : MonoBehaviour {
         weaponTabs[i].enabled = true;
 
         displayed = i;
+    }
+    public void ShowEndGame(bool _winner) {
+        matchEndAnim.enabled = true;
+
+        if(_winner) {
+            matchEndText.text = "YOU WIN!";
+        }
+        else {
+            matchEndText.text = "LOSER!";
+        }
+    }
+    public void ChangeHealth(int _newHealth) {
+        healthText.text = _newHealth + "";
     }
 }

@@ -88,7 +88,7 @@ public class Inventory : NetworkBehaviour {
         }
 
         //Not super efficient but it works
-        GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().ChangeDisplayedWeapon(currentWeapon);
+        if (isLocalPlayer) { GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().ChangeDisplayedWeapon(currentWeapon); }
     }
 
     // Use this for initialization
