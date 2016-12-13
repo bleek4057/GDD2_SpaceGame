@@ -18,6 +18,8 @@ public class NoGravFPSController : NetworkBehaviour
     private float yaw;
     private float pitch;
     private bool mouseHeld;
+    private Vector3 respawnPoint;
+    private Quaternion respawnRotation;
 
     public Rigidbody Body
     {
@@ -66,6 +68,11 @@ public class NoGravFPSController : NetworkBehaviour
     {
         GetComponentInChildren<Camera>().enabled = true;
         GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().SetPlayer(gameObject);
+
+        yaw = Vector3.Angle(transform.forward, transform.position.normalized);
+
+        respawnPoint = transform.position;
+        respawnRotation = transform.rotation;
     }
 
     void Update()
@@ -84,44 +91,6 @@ public class NoGravFPSController : NetworkBehaviour
         {
             mouseHeld = false;
             particleSystems[0].Clear();
-        }
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, jumpRadius);
-            Collider closest = null;
-            foreach (Collider collider in colliders)
-            {
-                if (collider != GetComponent<Collider>())
-                {
-                    if (closest == null)
-                    {
-                        closest = collider;
-                    }
-                    else
-                    {
-                        float closestDistance = (transform.position - closest.ClosestPointOnBounds(transform.position)).magnitude;
-                        float newDistance = (transform.position - collider.ClosestPointOnBounds(transform.position)).magnitude;
-
-                        if (newDistance < closestDistance)
-                        {
-                            closest = collider;
-                        }
-                    }
-                }
-            }
-
-            if (closest != null)
-            {
-                Debug.Log(transform.position + " " + closest.ClosestPointOnBounds(transform.position));
-                Vector3 direction = transform.position - closest.ClosestPointOnBounds(transform.position);
-                direction.Normalize();
-                direction *= jumpPower;
-
-                Debug.Log(direction);
-
-                body.AddForce(direction);
-            }
         }
 
         transform.localEulerAngles = new Vector3(pitch, yaw, 0);
@@ -143,5 +112,12 @@ public class NoGravFPSController : NetworkBehaviour
         body.AddForce(transform.up * force.y, ForceMode.Force);
 
         body.velocity = Vector3.ClampMagnitude(body.velocity, maxForce);
+    }
+
+    public void RespawnPosition()
+    {
+        transform.position = respawnPoint;
+        transform.rotation = respawnRotation;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }

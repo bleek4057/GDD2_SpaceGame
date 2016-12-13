@@ -19,8 +19,10 @@ public class Health : NetworkBehaviour
         currentHealth -= (int)amount;
         if(currentHealth <= 0)
         {
-            currentHealth = 0;
-            RpcRespawn();
+            foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                player.GetComponent<Health>().RpcRespawn();
+            }
         }
     }
 
@@ -34,7 +36,9 @@ public class Health : NetworkBehaviour
     {
         if(isLocalPlayer)
         {
-            transform.position = new Vector3(0, 1.75f, 12);
+            currentHealth = maxHealth;
+            GetComponent<Inventory>().currentWeapon = 0;
+            GetComponent<NoGravFPSController>().RespawnPosition();
         }
     }
 }
