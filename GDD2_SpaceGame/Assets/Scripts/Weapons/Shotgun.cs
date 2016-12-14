@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Shotgun : NetworkBehaviour
+public class Shotgun : MonoBehaviour
 {
     public NoGravFPSController owner;
     public float kickback;
@@ -32,7 +32,8 @@ public class Shotgun : NetworkBehaviour
         {
             if (hit.collider.gameObject.tag == "Player")
             {
-                hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
+                //hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
+                hit.collider.GetComponentInParent<NoGravFPSController>().RpcApplyImpulse(kickback, -hit.normal);
 
                 Health health = hit.collider.GetComponentInParent<Health>();
                 if (health != null)

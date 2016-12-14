@@ -59,7 +59,7 @@ public class Inventory : NetworkBehaviour {
     }
 
     [Command]
-    void CmdSetWeapon(int num)
+    public void CmdSetWeapon(int num)
     {
         currentWeapon = num;
     }
@@ -116,24 +116,28 @@ public class Inventory : NetworkBehaviour {
             {
                 Debug.Log("Switch weapon to Pistol");
                 CmdSetWeapon(0);
+                //GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().ChangeDisplayedWeapon(0);
             }
             //Laser
             if (Input.GetKeyDown(KeyCode.Alpha2) && availableWeapons[1])
             {
                 Debug.Log("Switch weapon to Laser");
                 CmdSetWeapon(1);
+                //GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().ChangeDisplayedWeapon(1);
             }
             //Full Auto
             if (Input.GetKeyDown(KeyCode.Alpha3) && availableWeapons[2])
             {
                 Debug.Log("Switch weapon to Assault Rifle");
                 CmdSetWeapon(2);
+                //GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().ChangeDisplayedWeapon(2);
             }
             //Shotgun
             if (Input.GetKeyDown(KeyCode.Alpha4) && availableWeapons[3])
             {
                 Debug.Log("Switch weapon to Shotgun");
                 CmdSetWeapon(3);
+                //GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().ChangeDisplayedWeapon(3);
             }
         }
     }

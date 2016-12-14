@@ -79,6 +79,11 @@ public class NoGravFPSController : NetworkBehaviour
         respawnRotation = transform.rotation;
     }
 
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if(hasFocus) { Cursor.lockState = CursorLockMode.Locked; }
+    }
+
     void Update()
     {
         if (!isLocalPlayer) { return; }
@@ -91,25 +96,24 @@ public class NoGravFPSController : NetworkBehaviour
                 respawned = false;
                 GetComponent<Rigidbody>().isKinematic = false;
             }
+            else { return; }
         }
-        else
+        
+        yaw += mouseSensitvity * Input.GetAxis("Mouse X");
+        pitch -= mouseSensitvity * Input.GetAxis("Mouse Y");
+
+        if (Input.GetMouseButton(0))
         {
-            yaw += mouseSensitvity * Input.GetAxis("Mouse X");
-            pitch -= mouseSensitvity * Input.GetAxis("Mouse Y");
-
-            if (Input.GetMouseButton(0))
-            {
-                inventory.CmdFireActiveWeapon(mouseHeld, transform.forward);
-                mouseHeld = true;
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                mouseHeld = false;
-                particleSystems[0].Clear();
-            }
-
-            transform.localEulerAngles = new Vector3(pitch, yaw, 0);
+            inventory.CmdFireActiveWeapon(mouseHeld, transform.forward);
+            mouseHeld = true;
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            mouseHeld = false;
+            particleSystems[0].Clear();
+        }
+
+        transform.localEulerAngles = new Vector3(pitch, yaw, 0); 
     }
 	
 	// Update is called once per frame

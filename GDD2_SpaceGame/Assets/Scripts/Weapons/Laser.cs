@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Laser : NetworkBehaviour
+public class Laser : MonoBehaviour
 {
     public NoGravFPSController owner;
     public float kickback;
@@ -30,7 +30,8 @@ public class Laser : NetworkBehaviour
         {
             if (hit.collider.gameObject.tag == "Player")
             {
-                hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
+                //hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
+                hit.collider.GetComponentInParent<NoGravFPSController>().RpcApplyImpulse(kickback, -hit.normal);
 
                 Health health = hit.collider.GetComponentInParent<Health>();
                 if (health != null)

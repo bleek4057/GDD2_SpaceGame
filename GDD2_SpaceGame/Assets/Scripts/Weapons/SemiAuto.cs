@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class SemiAuto : NetworkBehaviour
+public class SemiAuto : MonoBehaviour
 {
     public NoGravFPSController owner;
     public float kickback;
@@ -30,6 +30,7 @@ public class SemiAuto : NetworkBehaviour
         {
             if (hit.collider.gameObject.tag == "Player")
             {
+                //hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
                 hit.collider.GetComponentInParent<NoGravFPSController>().RpcApplyImpulse(kickback, -hit.normal);
 
                 Health health = hit.collider.GetComponentInParent<Health>();

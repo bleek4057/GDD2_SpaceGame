@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour {
     public Animator matchEndAnim;
     public Text matchEndText;
 
+    public Text playersText;
+
     public Image[] weaponTabs;
 
     private int displayed; //What weapon are we displaying on the weapon wheel
@@ -18,6 +20,7 @@ public class UIManager : MonoBehaviour {
 
 	void Start () {
         ChangeDisplayedWeapon(0);
+        playersText.text = "Players:";
     }
 	
 	void Update () {
@@ -27,6 +30,7 @@ public class UIManager : MonoBehaviour {
     public void SetPlayer(GameObject _player) {
         player = _player;
         inven = player.GetComponent<Inventory>();
+        playersText.text = player.ToString();
     }
     public void ChangeDisplayedWeapon(int i) {
         //print(i);
