@@ -11,6 +11,7 @@ public class NoGravFPSController : NetworkBehaviour
     public float mouseSensitvity;
     public float maxForce;
     public Text healthText;
+    public float respawnTimer;
 
     private Rigidbody body;
     private Inventory inventory;
@@ -20,6 +21,8 @@ public class NoGravFPSController : NetworkBehaviour
     private bool mouseHeld;
     private Vector3 respawnPoint;
     private Quaternion respawnRotation;
+    private float currentRespawnTime;
+    private bool respawned = false;
 
     public Rigidbody Body
     {
@@ -67,6 +70,7 @@ public class NoGravFPSController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         GetComponentInChildren<Camera>().enabled = true;
+        GetComponentInChildren<AudioListener>().enabled = true;
         GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().SetPlayer(gameObject);
 
         yaw = Vector3.Angle(transform.forward, transform.position.normalized);
@@ -79,21 +83,33 @@ public class NoGravFPSController : NetworkBehaviour
     {
         if (!isLocalPlayer) { return; }
 
-        yaw += mouseSensitvity * Input.GetAxis("Mouse X");
-        pitch -= mouseSensitvity * Input.GetAxis("Mouse Y");
-        
-        if (Input.GetMouseButton(0))
+        if (respawned)
         {
-            inventory.CmdFireActiveWeapon(mouseHeld, transform.forward);
-            mouseHeld = true;
+            currentRespawnTime -= Time.deltaTime;
+            if (currentRespawnTime <= 0)
+            {
+                respawned = false;
+                GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
-        if(Input.GetMouseButtonUp(0))
+        else
         {
-            mouseHeld = false;
-            particleSystems[0].Clear();
-        }
+            yaw += mouseSensitvity * Input.GetAxis("Mouse X");
+            pitch -= mouseSensitvity * Input.GetAxis("Mouse Y");
 
-        transform.localEulerAngles = new Vector3(pitch, yaw, 0);
+            if (Input.GetMouseButton(0))
+            {
+                inventory.CmdFireActiveWeapon(mouseHeld, transform.forward);
+                mouseHeld = true;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                mouseHeld = false;
+                particleSystems[0].Clear();
+            }
+
+            transform.localEulerAngles = new Vector3(pitch, yaw, 0);
+        }
     }
 	
 	// Update is called once per frame
@@ -119,5 +135,9 @@ public class NoGravFPSController : NetworkBehaviour
         transform.position = respawnPoint;
         transform.rotation = respawnRotation;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().isKinematic = true;
+        yaw = Vector3.Angle(transform.forward, transform.position.normalized);
+        currentRespawnTime = respawnTimer;
+        respawned = true;
     }
 }

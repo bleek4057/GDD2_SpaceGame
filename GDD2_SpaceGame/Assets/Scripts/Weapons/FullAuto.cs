@@ -30,9 +30,10 @@ public class FullAuto : NetworkBehaviour
         {
             if (hit.collider.gameObject.tag == "Player")
             {
-                hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
+                //hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
+                hit.collider.GetComponent<NoGravFPSController>().RpcApplyImpulse(kickback, -hit.normal);
 
-                Health health = hit.collider.GetComponentInParent<Health>();
+                Health health = hit.collider.GetComponent<Health>();
                 if (health != null)
                 {
                     health.TakeDamage(damage);
