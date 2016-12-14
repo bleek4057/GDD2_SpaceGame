@@ -25,21 +25,21 @@ public class Inventory : NetworkBehaviour {
     }
 
     [Command]
-    public void CmdFireActiveWeapon(bool mouseHeld, Vector3 localForward)
+    public void CmdFireActiveWeapon(bool mouseHeld, Vector3 localForward, Vector3 localUp)
     {
         switch (currentWeapon)
         {
             case 0:
-                pistolPrefab.Fire(mouseHeld, localForward);
+                pistolPrefab.Fire(mouseHeld, localForward, localUp);
                 break;
             case 1:
-                laserPrefab.Fire(mouseHeld, localForward);
+                laserPrefab.Fire(mouseHeld, localForward, localUp);
                 break;
             case 2:
-                assaultRifle.Fire(mouseHeld, localForward);
+                assaultRifle.Fire(mouseHeld, localForward, localUp);
                 break;
             case 3:
-                shotgun.Fire(mouseHeld, localForward);
+                shotgun.Fire(mouseHeld, localForward, localUp);
                 break;
         }
     }

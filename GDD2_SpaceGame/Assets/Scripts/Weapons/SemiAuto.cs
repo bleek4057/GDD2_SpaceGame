@@ -8,6 +8,7 @@ public class SemiAuto : MonoBehaviour
     public float kickback;
     public float fireRate;
     public float damage;
+    public float range;
 
     private float count;
 
@@ -23,14 +24,13 @@ public class SemiAuto : MonoBehaviour
         count += Time.deltaTime;
     }
 
-    void TestHit(Vector3 localForward)
+    void TestHit(Vector3 localForward, Vector3 localUp)
     {
         RaycastHit hit;
-        if (Physics.Raycast(owner.transform.position + (localForward), localForward, out hit, 15f))
+        if (Physics.Raycast(owner.transform.position + (0.5f * localUp), localForward, out hit, range))
         {
             if (hit.collider.gameObject.tag == "Player")
             {
-                //hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
                 hit.collider.GetComponentInParent<NoGravFPSController>().RpcApplyImpulse(kickback, -hit.normal);
 
                 Health health = hit.collider.GetComponentInParent<Health>();
@@ -42,18 +42,17 @@ public class SemiAuto : MonoBehaviour
         }
     }
 
-    public void Fire(bool mouseHeld, Vector3 localForward)
+    public void Fire(bool mouseHeld, Vector3 localForward, Vector3 localUp)
     {
         if (count >= fireRate && !mouseHeld)
         {
             count = 0;
-            //GetComponentInParent<Inventory>().ResetWeaponCool();
 
             owner.RpcApplyImpulse(kickback, -localForward);
-            Debug.DrawRay(owner.transform.position + (localForward), localForward * 25, Color.red, 1);
+            Debug.DrawRay(owner.transform.position + (0.5f * localUp), localForward * range, Color.red, 1);
             owner.RpcMuzzleFlash();
 
-            TestHit(localForward);
+            TestHit(localForward, localUp);
         }
     }
 }

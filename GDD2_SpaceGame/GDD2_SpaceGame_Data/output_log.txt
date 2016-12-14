@@ -16,26 +16,85 @@ Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_S
 Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.247 seconds
+- Completed reload, in  0.280 seconds
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 745M (ID=0xfe3)
+    Vendor:   NVIDIA
+    VRAM:     2019 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.051 seconds
 Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Chris\Documents\Unity Projects\GDD2_SpaceGame\GDD2_SpaceGame\GDD2_SpaceGame_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.069991 ms
+<RI> Initialized touch support.
+UnloadTime: 1.079399 ms
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 2e58 -> priority: 1 
+  Thread -> id: 242c -> priority: 1 
+UnloadTime: 1.454452 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2ce8 -> priority: 1 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 33.187687 ms
+UnloadTime: 1.635777 ms
 
-Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 615.
-Total: 0.437490 ms (FindLiveObjects: 0.027797 ms CreateObjectMapping: 0.026086 ms MarkObjects: 0.359229 ms  DeleteObjects: 0.024376 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 723.
+Total: 0.629934 ms (FindLiveObjects: 0.042337 ms CreateObjectMapping: 0.032074 ms MarkObjects: 0.545686 ms  DeleteObjects: 0.009408 ms)
 
-Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:7777}
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.945399 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.929715 ms
 
-Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 447.
-Total: 0.422094 ms (FindLiveObjects: 0.011974 ms CreateObjectMapping: 0.017533 ms MarkObjects: 0.290377 ms  DeleteObjects: 0.101781 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 608.
+Total: 0.719314 ms (FindLiveObjects: 0.051746 ms CreateObjectMapping: 0.054312 ms MarkObjects: 0.599143 ms  DeleteObjects: 0.012829 ms)
+
+Switch weapon to Assault Rifle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Switch weapon to Shotgun
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Switch weapon to Pistol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Switch weapon to Shotgun
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Switch weapon to Laser
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Switch weapon to Pistol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Switch weapon to Shotgun
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Switch weapon to Assault Rifle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 

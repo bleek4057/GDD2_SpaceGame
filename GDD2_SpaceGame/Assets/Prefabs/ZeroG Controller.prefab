@@ -759,7 +759,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011698312434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10.301}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1020,7 +1020,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014146334666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0.35, z: 0.05}
+  m_LocalPosition: {x: -0.1, y: 0.55, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1432,6 +1432,7 @@ MonoBehaviour:
   kickback: 25
   fireRate: 5
   damage: 35
+  range: 15
 --- !u!114 &114000010893581528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1490,6 +1491,7 @@ MonoBehaviour:
   kickback: 5
   fireRate: 0.5
   damage: 10
+  range: 25
 --- !u!114 &114000011583788154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1557,6 +1559,7 @@ MonoBehaviour:
   kickback: 5
   fireRate: 1
   damage: 10
+  range: 20
 --- !u!114 &114000013101784878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1619,6 +1622,7 @@ MonoBehaviour:
   kickback: 0
   fireRate: 0
   damage: 0.25
+  range: 10
 --- !u!124 &124000013268568188
 Behaviour:
   m_ObjectHideFlags: 1
@@ -3508,7 +3512,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 1
+      scalar: 0.8
       maxCurve:
         serializedVersion: 2
         m_Curve:

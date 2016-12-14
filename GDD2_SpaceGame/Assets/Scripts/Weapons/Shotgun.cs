@@ -8,15 +8,14 @@ public class Shotgun : MonoBehaviour
     public float kickback;
     public float fireRate;
     public float damage;
+    public float range;
 
     private float count;
-    private bool hit;
 
     // Use this for initialization
     void Start()
     {
         count = 0;
-        hit = false;
     }
 
     // Update is called once per frame
@@ -25,14 +24,13 @@ public class Shotgun : MonoBehaviour
         count += Time.deltaTime;
     }
 
-    void TestHit(Vector3 localForward)
+    void TestHit(Vector3 localForward, Vector3 localUp)
     {
         RaycastHit hit;
-        if (Physics.Raycast(owner.transform.position, localForward, out hit, 15f))
+        if (Physics.Raycast(owner.transform.position + (0.5f * localUp), localForward, out hit, range))
         {
             if (hit.collider.gameObject.tag == "Player")
             {
-                //hit.rigidbody.AddForce(kickback * (-hit.normal), ForceMode.Impulse);
                 hit.collider.GetComponentInParent<NoGravFPSController>().RpcApplyImpulse(kickback, -hit.normal);
 
                 Health health = hit.collider.GetComponentInParent<Health>();
@@ -44,19 +42,17 @@ public class Shotgun : MonoBehaviour
         }
     }
 
-    public void Fire(bool mouseHeld, Vector3 localForward)
+    public void Fire(bool mouseHeld, Vector3 localForward, Vector3 localUp)
     {
         if (count >= fireRate && !mouseHeld)
         {
             count = 0;
-            //GetComponentInParent<Inventory>().ResetWeaponCool();
 
             owner.RpcApplyImpulse(kickback, -localForward);
-            Debug.DrawRay(owner.transform.position, localForward * 15, Color.red, 5);
+            Debug.DrawRay(owner.transform.position + (0.5f * localUp), localForward * range, Color.red, 5);
             owner.RpcMuzzleFlash();
 
-            TestHit(localForward);
+            TestHit(localForward, localUp);
         }
-        hit = false;
     }
 }

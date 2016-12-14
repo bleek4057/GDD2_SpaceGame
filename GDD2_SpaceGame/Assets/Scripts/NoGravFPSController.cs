@@ -104,7 +104,7 @@ public class NoGravFPSController : NetworkBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            inventory.CmdFireActiveWeapon(mouseHeld, transform.forward);
+            inventory.CmdFireActiveWeapon(mouseHeld, transform.forward, transform.up);
             mouseHeld = true;
         }
         if (Input.GetMouseButtonUp(0))
